@@ -1,0 +1,62 @@
+app.java
+
+package com.example;
+
+public class App {
+
+    public boolean isEligible(int age, double income, int creditScore) {
+        return age >= 21 && income >= 25000 && creditScore >= 700;
+    }
+
+    public static void main(String[] args) {
+        App loan = new App();
+
+        int age = 30;
+        double income = 40000;
+        int creditScore = 750;
+
+        boolean eligible = loan.isEligible(age, income, creditScore);
+
+        System.out.println("Age: " + age);
+        System.out.println("Income: " + income);
+        System.out.println("Credit Score: " + creditScore);
+        System.out.println("Loan Eligible: " + eligible);
+    }
+}
+
+apptest.java
+
+package com.example;
+
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+class AppTest {
+
+    App loan = new App();
+
+    @Test
+    void testEligibleApplicant() {
+        assertTrue(loan.isEligible(30, 40000, 750));
+    }
+
+    @Test
+    void testNotEligibleDueToAge() {
+        assertFalse(loan.isEligible(18, 40000, 750));
+    }
+
+    @Test
+    void testNotEligibleDueToIncome() {
+        assertFalse(loan.isEligible(30, 20000, 750));
+    }
+
+    @Test
+    void testNotEligibleDueToCreditScore() {
+        assertFalse(loan.isEligible(30, 40000, 650));
+    }
+
+    @Test
+    void testBoundaryCase() {
+        assertTrue(loan.isEligible(21, 25000, 700));
+    }
+}
