@@ -1,0 +1,57 @@
+app.java
+
+
+package com.example;
+
+public class App {
+
+    public boolean isEligible(double percentage, double familyIncome) {
+        return percentage >= 75.0 && familyIncome <= 200000;
+    }
+
+    public static void main(String[] args) {
+        App scholarship = new App();
+
+        double percentage = 82.5;
+        double familyIncome = 150000;
+
+        boolean eligible = scholarship.isEligible(percentage, familyIncome);
+
+        System.out.println("Percentage: " + percentage);
+        System.out.println("Family Income: " + familyIncome);
+        System.out.println("Scholarship Eligible: " + eligible);
+    }
+}
+
+apptest.java
+
+
+package com.example;
+
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+class AppTest {
+
+    App scholarship = new App();
+
+    @Test
+    void testEligibleStudent() {
+        assertTrue(scholarship.isEligible(85.0, 150000));
+    }
+
+    @Test
+    void testNotEligibleDueToLowPercentage() {
+        assertFalse(scholarship.isEligible(70.0, 150000));
+    }
+
+    @Test
+    void testNotEligibleDueToHighIncome() {
+        assertFalse(scholarship.isEligible(85.0, 250000));
+    }
+
+    @Test
+    void testBoundaryCase() {
+        assertTrue(scholarship.isEligible(75.0, 200000));
+    }
+}
