@@ -1,0 +1,2764 @@
+Got it — you want **more coding questions (like your faculty asked)**, not theory.
+
+Here are **more similar programs** (same style as grade calculator, loan, etc.) that can be asked. These are **very common lab questions** 👇
+
+---
+
+# 🔹 1) Student Attendance Eligibility
+
+## `App.java`
+
+```java
+package com.example;
+
+public class App {
+
+    public boolean isEligible(int totalClasses, int attendedClasses) {
+        if (totalClasses <= 0 || attendedClasses < 0) {
+            throw new IllegalArgumentException("Invalid input");
+        }
+
+        double percentage = (attendedClasses * 100.0) / totalClasses;
+        return percentage >= 75;
+    }
+
+    public static void main(String[] args) {
+        App student = new App();
+
+        boolean result = student.isEligible(100, 80);
+        System.out.println("Attendance Eligible: " + result);
+    }
+}
+```
+
+## `AppTest.java`
+
+```java
+package com.example;
+
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+class AppTest {
+
+    App student = new App();
+
+    @Test
+    void testEligible() {
+        assertTrue(student.isEligible(100, 80));
+    }
+
+    @Test
+    void testNotEligible() {
+        assertFalse(student.isEligible(100, 60));
+    }
+
+    @Test
+    void testInvalidInput() {
+        assertThrows(IllegalArgumentException.class, () -> student.isEligible(0, 50));
+    }
+}
+```
+
+---
+
+# 🔹 2) Electricity Bill Calculator
+
+## `App.java`
+
+```java
+package com.example;
+
+public class App {
+
+    public double calculateBill(int units) {
+        if (units < 0) {
+            throw new IllegalArgumentException("Units cannot be negative");
+        }
+
+        if (units <= 100) {
+            return units * 2;
+        } else if (units <= 200) {
+            return (100 * 2) + (units - 100) * 3;
+        } else {
+            return (100 * 2) + (100 * 3) + (units - 200) * 5;
+        }
+    }
+
+    public static void main(String[] args) {
+        App bill = new App();
+        System.out.println("Bill Amount: " + bill.calculateBill(250));
+    }
+}
+```
+
+## `AppTest.java`
+
+```java
+package com.example;
+
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+class AppTest {
+
+    App bill = new App();
+
+    @Test
+    void testLowUnits() {
+        assertEquals(200, bill.calculateBill(100));
+    }
+
+    @Test
+    void testMediumUnits() {
+        assertEquals(500, bill.calculateBill(200));
+    }
+
+    @Test
+    void testHighUnits() {
+        assertEquals(750, bill.calculateBill(250));
+    }
+
+    @Test
+    void testInvalidUnits() {
+        assertThrows(IllegalArgumentException.class, () -> bill.calculateBill(-10));
+    }
+}
+```
+
+---
+
+# 🔹 3) Simple Interest Calculator
+
+## `App.java`
+
+```java
+package com.example;
+
+public class App {
+
+    public double calculateSI(double principal, double rate, double time) {
+        if (principal < 0 || rate < 0 || time < 0) {
+            throw new IllegalArgumentException("Invalid input");
+        }
+        return (principal * rate * time) / 100;
+    }
+
+    public static void main(String[] args) {
+        App si = new App();
+        System.out.println("Simple Interest: " + si.calculateSI(1000, 5, 2));
+    }
+}
+```
+
+## `AppTest.java`
+
+```java
+package com.example;
+
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+class AppTest {
+
+    App si = new App();
+
+    @Test
+    void testSI() {
+        assertEquals(100, si.calculateSI(1000, 5, 2), 0.01);
+    }
+
+    @Test
+    void testInvalidInput() {
+        assertThrows(IllegalArgumentException.class, () -> si.calculateSI(-1000, 5, 2));
+    }
+}
+```
+
+---
+
+# 🔹 4) Voting Eligibility
+
+## `App.java`
+
+```java
+package com.example;
+
+public class App {
+
+    public boolean canVote(int age) {
+        if (age < 0) {
+            throw new IllegalArgumentException("Invalid age");
+        }
+        return age >= 18;
+    }
+
+    public static void main(String[] args) {
+        App vote = new App();
+        System.out.println("Eligible to Vote: " + vote.canVote(20));
+    }
+}
+```
+
+## `AppTest.java`
+
+```java
+package com.example;
+
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+class AppTest {
+
+    App vote = new App();
+
+    @Test
+    void testEligible() {
+        assertTrue(vote.canVote(20));
+    }
+
+    @Test
+    void testNotEligible() {
+        assertFalse(vote.canVote(16));
+    }
+
+    @Test
+    void testInvalidAge() {
+        assertThrows(IllegalArgumentException.class, () -> vote.canVote(-1));
+    }
+}
+```
+
+---
+
+# 🔹 5) Even/Odd Checker
+
+## `App.java`
+
+```java
+package com.example;
+
+public class App {
+
+    public boolean isEven(int number) {
+        return number % 2 == 0;
+    }
+
+    public static void main(String[] args) {
+        App obj = new App();
+        System.out.println("Is Even: " + obj.isEven(10));
+    }
+}
+```
+
+## `AppTest.java`
+
+```java
+package com.example;
+
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+class AppTest {
+
+    App obj = new App();
+
+    @Test
+    void testEven() {
+        assertTrue(obj.isEven(10));
+    }
+
+    @Test
+    void testOdd() {
+        assertFalse(obj.isEven(7));
+    }
+}
+
+Perfect — here are **more extra coding questions with full `App.java` + `AppTest.java`**, exactly in the format your faculty expects.
+
+These are **new ones (not repeated)** and very likely to be asked 👇
+
+---
+
+# 🔥 1) Insurance Eligibility Checker
+
+## `App.java`
+
+```java
+package com.example;
+
+public class App {
+
+    public boolean isEligible(int age, boolean hasDisease) {
+        if (age < 0) {
+            throw new IllegalArgumentException("Invalid age");
+        }
+        return age >= 18 && age <= 60 && !hasDisease;
+    }
+}
+```
+
+## `AppTest.java`
+
+```java
+package com.example;
+
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+class AppTest {
+
+    App obj = new App();
+
+    @Test
+    void testEligible() {
+        assertTrue(obj.isEligible(30, false));
+    }
+
+    @Test
+    void testNotEligibleAge() {
+        assertFalse(obj.isEligible(65, false));
+    }
+
+    @Test
+    void testNotEligibleDisease() {
+        assertFalse(obj.isEligible(30, true));
+    }
+
+    @Test
+    void testInvalidAge() {
+        assertThrows(IllegalArgumentException.class, () -> obj.isEligible(-1, false));
+    }
+}
+```
+
+---
+
+# 🔥 2) Parking Fee Calculator
+
+## `App.java`
+
+```java
+package com.example;
+
+public class App {
+
+    public double calculateFee(int hours) {
+        if (hours < 0) {
+            throw new IllegalArgumentException("Invalid hours");
+        }
+
+        if (hours <= 2) {
+            return 20;
+        } else if (hours <= 5) {
+            return 50;
+        } else {
+            return 100;
+        }
+    }
+}
+```
+
+## `AppTest.java`
+
+```java
+package com.example;
+
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+class AppTest {
+
+    App obj = new App();
+
+    @Test
+    void testShortParking() {
+        assertEquals(20, obj.calculateFee(2));
+    }
+
+    @Test
+    void testMediumParking() {
+        assertEquals(50, obj.calculateFee(4));
+    }
+
+    @Test
+    void testLongParking() {
+        assertEquals(100, obj.calculateFee(6));
+    }
+
+    @Test
+    void testInvalidHours() {
+        assertThrows(IllegalArgumentException.class, () -> obj.calculateFee(-1));
+    }
+}
+```
+
+---
+
+# 🔥 3) Age Category Classifier
+
+## `App.java`
+
+```java
+package com.example;
+
+public class App {
+
+    public String getCategory(int age) {
+        if (age < 0) {
+            throw new IllegalArgumentException("Invalid age");
+        }
+
+        if (age < 13) return "Child";
+        else if (age < 20) return "Teen";
+        else if (age < 60) return "Adult";
+        else return "Senior";
+    }
+}
+```
+
+## `AppTest.java`
+
+```java
+package com.example;
+
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+class AppTest {
+
+    App obj = new App();
+
+    @Test
+    void testChild() {
+        assertEquals("Child", obj.getCategory(10));
+    }
+
+    @Test
+    void testTeen() {
+        assertEquals("Teen", obj.getCategory(15));
+    }
+
+    @Test
+    void testAdult() {
+        assertEquals("Adult", obj.getCategory(30));
+    }
+
+    @Test
+    void testSenior() {
+        assertEquals("Senior", obj.getCategory(65));
+    }
+
+    @Test
+    void testInvalidAge() {
+        assertThrows(IllegalArgumentException.class, () -> obj.getCategory(-5));
+    }
+}
+```
+
+---
+
+# 🔥 4) Overtime Pay Calculator
+
+## `App.java`
+
+```java
+package com.example;
+
+public class App {
+
+    public double calculatePay(int hours, double rate) {
+        if (hours < 0 || rate < 0) {
+            throw new IllegalArgumentException("Invalid input");
+        }
+
+        if (hours <= 40) {
+            return hours * rate;
+        } else {
+            return (40 * rate) + (hours - 40) * rate * 1.5;
+        }
+    }
+}
+```
+
+## `AppTest.java`
+
+```java
+package com.example;
+
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+class AppTest {
+
+    App obj = new App();
+
+    @Test
+    void testNormalPay() {
+        assertEquals(4000, obj.calculatePay(40, 100), 0.01);
+    }
+
+    @Test
+    void testOvertimePay() {
+        assertEquals(4750, obj.calculatePay(45, 100), 0.01);
+    }
+
+    @Test
+    void testInvalidInput() {
+        assertThrows(IllegalArgumentException.class, () -> obj.calculatePay(-1, 100));
+    }
+}
+```
+
+---
+
+# 🔥 5) Divisibility Checker
+
+## `App.java`
+
+```java
+package com.example;
+
+public class App {
+
+    public boolean isDivisible(int number) {
+        return number % 3 == 0 && number % 5 == 0;
+    }
+}
+```
+
+## `AppTest.java`
+
+```java
+package com.example;
+
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+class AppTest {
+
+    App obj = new App();
+
+    @Test
+    void testDivisible() {
+        assertTrue(obj.isDivisible(15));
+    }
+
+    @Test
+    void testNotDivisible() {
+        assertFalse(obj.isDivisible(10));
+    }
+}
+```
+
+---
+
+# 🔥 6) Student Result (Pass/Fail with distinction)
+
+## `App.java`
+
+```java
+package com.example;
+
+public class App {
+
+    public String getResult(int marks) {
+        if (marks < 0 || marks > 100) {
+            throw new IllegalArgumentException("Invalid marks");
+        }
+
+        if (marks >= 75) return "Distinction";
+        else if (marks >= 40) return "Pass";
+        else return "Fail";
+    }
+}
+```
+
+## `AppTest.java`
+
+```java
+package com.example;
+
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+class AppTest {
+
+    App obj = new App();
+
+    @Test
+    void testDistinction() {
+        assertEquals("Distinction", obj.getResult(80));
+    }
+
+    @Test
+    void testPass() {
+        assertEquals("Pass", obj.getResult(50));
+    }
+
+    @Test
+    void testFail() {
+        assertEquals("Fail", obj.getResult(30));
+    }
+
+    @Test
+    void testInvalidMarks() {
+        assertThrows(IllegalArgumentException.class, () -> obj.getResult(120));
+    }
+}
+```
+
+---
+
+# 🔥 7) Discount Eligibility (Festival Offer)
+
+## `App.java`
+
+```java
+package com.example;
+
+public class App {
+
+    public boolean isEligible(double amount, boolean isMember) {
+        if (amount < 0) {
+            throw new IllegalArgumentException("Invalid amount");
+        }
+        return amount > 2000 || isMember;
+    }
+}
+```
+
+## `AppTest.java`
+
+```java
+package com.example;
+
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+class AppTest {
+
+    App obj = new App();
+
+    @Test
+    void testEligibleByAmount() {
+        assertTrue(obj.isEligible(3000, false));
+    }
+
+    @Test
+    void testEligibleByMember() {
+        assertTrue(obj.isEligible(1000, true));
+    }
+
+    @Test
+    void testNotEligible() {
+        assertFalse(obj.isEligible(1000, false));
+    }
+}
+
+Absolutely — here are **more extra Maven lab coding questions** with both **`App.java`** and **`AppTest.java`**.
+
+These are in the same style your faculty is asking.
+
+---
+
+## 8) Course Registration Eligibility
+
+### `App.java`
+
+```java
+package com.example;
+
+public class App {
+
+    public boolean canRegister(int age, boolean hasPrerequisite) {
+        if (age < 0) {
+            throw new IllegalArgumentException("Invalid age");
+        }
+        return age >= 18 && hasPrerequisite;
+    }
+
+    public static void main(String[] args) {
+        App app = new App();
+        System.out.println("Can Register: " + app.canRegister(20, true));
+    }
+}
+```
+
+### `AppTest.java`
+
+```java
+package com.example;
+
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+class AppTest {
+
+    App app = new App();
+
+    @Test
+    void testEligible() {
+        assertTrue(app.canRegister(20, true));
+    }
+
+    @Test
+    void testNotEligibleByAge() {
+        assertFalse(app.canRegister(17, true));
+    }
+
+    @Test
+    void testNotEligibleByPrerequisite() {
+        assertFalse(app.canRegister(20, false));
+    }
+
+    @Test
+    void testInvalidAge() {
+        assertThrows(IllegalArgumentException.class, () -> app.canRegister(-1, true));
+    }
+}
+```
+
+---
+
+## 9) Hostel Room Eligibility
+
+### `App.java`
+
+```java
+package com.example;
+
+public class App {
+
+    public boolean isEligible(int distanceFromHome, boolean isDayScholar) {
+        if (distanceFromHome < 0) {
+            throw new IllegalArgumentException("Invalid distance");
+        }
+        return distanceFromHome > 50 && !isDayScholar;
+    }
+
+    public static void main(String[] args) {
+        App app = new App();
+        System.out.println("Hostel Eligible: " + app.isEligible(75, false));
+    }
+}
+```
+
+### `AppTest.java`
+
+```java
+package com.example;
+
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+class AppTest {
+
+    App app = new App();
+
+    @Test
+    void testEligible() {
+        assertTrue(app.isEligible(75, false));
+    }
+
+    @Test
+    void testNotEligibleByDistance() {
+        assertFalse(app.isEligible(30, false));
+    }
+
+    @Test
+    void testNotEligibleByDayScholar() {
+        assertFalse(app.isEligible(75, true));
+    }
+
+    @Test
+    void testInvalidDistance() {
+        assertThrows(IllegalArgumentException.class, () -> app.isEligible(-5, false));
+    }
+}
+```
+
+---
+
+## 10) Exam Eligibility Checker
+
+### `App.java`
+
+```java
+package com.example;
+
+public class App {
+
+    public boolean isEligible(double attendancePercentage, boolean feesPaid) {
+        if (attendancePercentage < 0 || attendancePercentage > 100) {
+            throw new IllegalArgumentException("Invalid attendance");
+        }
+        return attendancePercentage >= 75.0 && feesPaid;
+    }
+
+    public static void main(String[] args) {
+        App app = new App();
+        System.out.println("Exam Eligible: " + app.isEligible(80.0, true));
+    }
+}
+```
+
+### `AppTest.java`
+
+```java
+package com.example;
+
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+class AppTest {
+
+    App app = new App();
+
+    @Test
+    void testEligible() {
+        assertTrue(app.isEligible(80.0, true));
+    }
+
+    @Test
+    void testNotEligibleByAttendance() {
+        assertFalse(app.isEligible(60.0, true));
+    }
+
+    @Test
+    void testNotEligibleByFees() {
+        assertFalse(app.isEligible(80.0, false));
+    }
+
+    @Test
+    void testInvalidAttendance() {
+        assertThrows(IllegalArgumentException.class, () -> app.isEligible(120.0, true));
+    }
+}
+```
+
+---
+
+## 11) Movie Ticket Price Calculator
+
+### `App.java`
+
+```java
+package com.example;
+
+public class App {
+
+    public double calculatePrice(int age) {
+        if (age < 0) {
+            throw new IllegalArgumentException("Invalid age");
+        }
+
+        if (age < 12) {
+            return 100;
+        } else if (age <= 60) {
+            return 200;
+        } else {
+            return 150;
+        }
+    }
+
+    public static void main(String[] args) {
+        App app = new App();
+        System.out.println("Ticket Price: " + app.calculatePrice(25));
+    }
+}
+```
+
+### `AppTest.java`
+
+```java
+package com.example;
+
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+class AppTest {
+
+    App app = new App();
+
+    @Test
+    void testChildPrice() {
+        assertEquals(100, app.calculatePrice(10), 0.01);
+    }
+
+    @Test
+    void testAdultPrice() {
+        assertEquals(200, app.calculatePrice(25), 0.01);
+    }
+
+    @Test
+    void testSeniorPrice() {
+        assertEquals(150, app.calculatePrice(65), 0.01);
+    }
+
+    @Test
+    void testInvalidAge() {
+        assertThrows(IllegalArgumentException.class, () -> app.calculatePrice(-1));
+    }
+}
+```
+
+---
+
+## 12) Mobile Recharge Plan Selector
+
+### `App.java`
+
+```java
+package com.example;
+
+public class App {
+
+    public String getPlan(double amount) {
+        if (amount < 0) {
+            throw new IllegalArgumentException("Invalid amount");
+        }
+
+        if (amount >= 499) {
+            return "Premium";
+        } else if (amount >= 299) {
+            return "Standard";
+        } else {
+            return "Basic";
+        }
+    }
+
+    public static void main(String[] args) {
+        App app = new App();
+        System.out.println("Plan: " + app.getPlan(350));
+    }
+}
+```
+
+### `AppTest.java`
+
+```java
+package com.example;
+
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+class AppTest {
+
+    App app = new App();
+
+    @Test
+    void testPremiumPlan() {
+        assertEquals("Premium", app.getPlan(500));
+    }
+
+    @Test
+    void testStandardPlan() {
+        assertEquals("Standard", app.getPlan(350));
+    }
+
+    @Test
+    void testBasicPlan() {
+        assertEquals("Basic", app.getPlan(150));
+    }
+
+    @Test
+    void testInvalidAmount() {
+        assertThrows(IllegalArgumentException.class, () -> app.getPlan(-10));
+    }
+}
+```
+
+---
+
+## 13) Fuel Cost Calculator
+
+### `App.java`
+
+```java
+package com.example;
+
+public class App {
+
+    public double calculateCost(double liters, double pricePerLiter) {
+        if (liters < 0 || pricePerLiter < 0) {
+            throw new IllegalArgumentException("Invalid input");
+        }
+        return liters * pricePerLiter;
+    }
+
+    public static void main(String[] args) {
+        App app = new App();
+        System.out.println("Fuel Cost: " + app.calculateCost(10, 102.5));
+    }
+}
+```
+
+### `AppTest.java`
+
+```java
+package com.example;
+
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+class AppTest {
+
+    App app = new App();
+
+    @Test
+    void testCalculateCost() {
+        assertEquals(1025.0, app.calculateCost(10, 102.5), 0.01);
+    }
+
+    @Test
+    void testZeroLiters() {
+        assertEquals(0.0, app.calculateCost(0, 102.5), 0.01);
+    }
+
+    @Test
+    void testInvalidInput() {
+        assertThrows(IllegalArgumentException.class, () -> app.calculateCost(-1, 100));
+    }
+}
+```
+
+---
+
+## 14) Cab Fare Calculator
+
+### `App.java`
+
+```java
+package com.example;
+
+public class App {
+
+    public double calculateFare(double distance) {
+        if (distance < 0) {
+            throw new IllegalArgumentException("Invalid distance");
+        }
+
+        if (distance <= 5) {
+            return 100;
+        } else {
+            return 100 + (distance - 5) * 15;
+        }
+    }
+
+    public static void main(String[] args) {
+        App app = new App();
+        System.out.println("Cab Fare: " + app.calculateFare(10));
+    }
+}
+```
+
+### `AppTest.java`
+
+```java
+package com.example;
+
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+class AppTest {
+
+    App app = new App();
+
+    @Test
+    void testMinimumFare() {
+        assertEquals(100, app.calculateFare(5), 0.01);
+    }
+
+    @Test
+    void testExtraDistanceFare() {
+        assertEquals(175, app.calculateFare(10), 0.01);
+    }
+
+    @Test
+    void testInvalidDistance() {
+        assertThrows(IllegalArgumentException.class, () -> app.calculateFare(-2));
+    }
+}
+```
+
+---
+
+## 15) Rectangle Area and Perimeter
+
+### `App.java`
+
+```java
+package com.example;
+
+public class App {
+
+    public double calculateArea(double length, double width) {
+        if (length < 0 || width < 0) {
+            throw new IllegalArgumentException("Invalid input");
+        }
+        return length * width;
+    }
+
+    public double calculatePerimeter(double length, double width) {
+        if (length < 0 || width < 0) {
+            throw new IllegalArgumentException("Invalid input");
+        }
+        return 2 * (length + width);
+    }
+
+    public static void main(String[] args) {
+        App app = new App();
+        System.out.println("Area: " + app.calculateArea(5, 4));
+        System.out.println("Perimeter: " + app.calculatePerimeter(5, 4));
+    }
+}
+```
+
+### `AppTest.java`
+
+```java
+package com.example;
+
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+class AppTest {
+
+    App app = new App();
+
+    @Test
+    void testArea() {
+        assertEquals(20, app.calculateArea(5, 4), 0.01);
+    }
+
+    @Test
+    void testPerimeter() {
+        assertEquals(18, app.calculatePerimeter(5, 4), 0.01);
+    }
+
+    @Test
+    void testInvalidInput() {
+        assertThrows(IllegalArgumentException.class, () -> app.calculateArea(-1, 4));
+    }
+}
+```
+
+---
+
+## 16) Username Validation
+
+### `App.java`
+
+```java
+package com.example;
+
+public class App {
+
+    public boolean isValidUsername(String username) {
+        if (username == null) {
+            throw new IllegalArgumentException("Username cannot be null");
+        }
+        return username.length() >= 5;
+    }
+
+    public static void main(String[] args) {
+        App app = new App();
+        System.out.println("Valid Username: " + app.isValidUsername("thamarai"));
+    }
+}
+```
+
+### `AppTest.java`
+
+```java
+package com.example;
+
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+class AppTest {
+
+    App app = new App();
+
+    @Test
+    void testValidUsername() {
+        assertTrue(app.isValidUsername("thamarai"));
+    }
+
+    @Test
+    void testInvalidUsername() {
+        assertFalse(app.isValidUsername("abc"));
+    }
+
+    @Test
+    void testNullUsername() {
+        assertThrows(IllegalArgumentException.class, () -> app.isValidUsername(null));
+    }
+}
+```
+
+---
+
+## 17) Leap Year Checker
+
+### `App.java`
+
+```java
+package com.example;
+
+public class App {
+
+    public boolean isLeapYear(int year) {
+        if (year < 0) {
+            throw new IllegalArgumentException("Invalid year");
+        }
+        return (year % 4 == 0 && year % 100 != 0) || (year % 400 == 0);
+    }
+
+    public static void main(String[] args) {
+        App app = new App();
+        System.out.println("Leap Year: " + app.isLeapYear(2024));
+    }
+}
+```
+
+### `AppTest.java`
+
+```java
+package com.example;
+
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+class AppTest {
+
+    App app = new App();
+
+    @Test
+    void testLeapYear() {
+        assertTrue(app.isLeapYear(2024));
+    }
+
+    @Test
+    void testNotLeapYear() {
+        assertFalse(app.isLeapYear(2023));
+    }
+
+    @Test
+    void testCenturyLeapYear() {
+        assertTrue(app.isLeapYear(2000));
+    }
+
+    @Test
+    void testInvalidYear() {
+        assertThrows(IllegalArgumentException.class, () -> app.isLeapYear(-1));
+    }
+}
+```
+
+---
+
+## 18) Product GST Calculator
+
+### `App.java`
+
+```java
+package com.example;
+
+public class App {
+
+    public double calculateTotal(double price, double gstPercentage) {
+        if (price < 0 || gstPercentage < 0) {
+            throw new IllegalArgumentException("Invalid input");
+        }
+        return price + (price * gstPercentage / 100);
+    }
+
+    public static void main(String[] args) {
+        App app = new App();
+        System.out.println("Total Amount: " + app.calculateTotal(1000, 18));
+    }
+}
+```
+
+### `AppTest.java`
+
+```java
+package com.example;
+
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+class AppTest {
+
+    App app = new App();
+
+    @Test
+    void testCalculateTotal() {
+        assertEquals(1180, app.calculateTotal(1000, 18), 0.01);
+    }
+
+    @Test
+    void testZeroGST() {
+        assertEquals(1000, app.calculateTotal(1000, 0), 0.01);
+    }
+
+    @Test
+    void testInvalidInput() {
+        assertThrows(IllegalArgumentException.class, () -> app.calculateTotal(-100, 18));
+    }
+}
+Absolutely — here are **more extra coding questions** with full **`App.java`** and **`AppTest.java`** in the same Maven/JUnit style.
+
+---
+
+## 19) Bus Pass Eligibility
+
+### `App.java`
+
+```java
+package com.example;
+
+public class App {
+
+    public boolean isEligible(int age, boolean isStudent) {
+        if (age < 0) {
+            throw new IllegalArgumentException("Invalid age");
+        }
+        return isStudent && age <= 25;
+    }
+
+    public static void main(String[] args) {
+        App app = new App();
+        System.out.println("Bus Pass Eligible: " + app.isEligible(20, true));
+    }
+}
+```
+
+### `AppTest.java`
+
+```java
+package com.example;
+
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+class AppTest {
+
+    App app = new App();
+
+    @Test
+    void testEligible() {
+        assertTrue(app.isEligible(20, true));
+    }
+
+    @Test
+    void testNotEligibleByAge() {
+        assertFalse(app.isEligible(30, true));
+    }
+
+    @Test
+    void testNotEligibleByStudentStatus() {
+        assertFalse(app.isEligible(20, false));
+    }
+
+    @Test
+    void testInvalidAge() {
+        assertThrows(IllegalArgumentException.class, () -> app.isEligible(-1, true));
+    }
+}
+```
+
+---
+
+## 20) Water Bill Calculator
+
+### `App.java`
+
+```java
+package com.example;
+
+public class App {
+
+    public double calculateBill(int units) {
+        if (units < 0) {
+            throw new IllegalArgumentException("Invalid units");
+        }
+
+        if (units <= 50) {
+            return units * 1.5;
+        } else if (units <= 100) {
+            return 50 * 1.5 + (units - 50) * 2.5;
+        } else {
+            return 50 * 1.5 + 50 * 2.5 + (units - 100) * 4.0;
+        }
+    }
+
+    public static void main(String[] args) {
+        App app = new App();
+        System.out.println("Water Bill: " + app.calculateBill(120));
+    }
+}
+```
+
+### `AppTest.java`
+
+```java
+package com.example;
+
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+class AppTest {
+
+    App app = new App();
+
+    @Test
+    void testLowUsage() {
+        assertEquals(75.0, app.calculateBill(50), 0.01);
+    }
+
+    @Test
+    void testMediumUsage() {
+        assertEquals(200.0, app.calculateBill(100), 0.01);
+    }
+
+    @Test
+    void testHighUsage() {
+        assertEquals(280.0, app.calculateBill(120), 0.01);
+    }
+
+    @Test
+    void testInvalidUnits() {
+        assertThrows(IllegalArgumentException.class, () -> app.calculateBill(-1));
+    }
+}
+```
+
+---
+
+## 21) Fine Calculator for Late Return
+
+### `App.java`
+
+```java
+package com.example;
+
+public class App {
+
+    public double calculateFine(int lateDays) {
+        if (lateDays < 0) {
+            throw new IllegalArgumentException("Invalid late days");
+        }
+
+        if (lateDays <= 5) {
+            return lateDays * 2;
+        } else if (lateDays <= 10) {
+            return lateDays * 5;
+        } else {
+            return lateDays * 10;
+        }
+    }
+
+    public static void main(String[] args) {
+        App app = new App();
+        System.out.println("Fine: " + app.calculateFine(8));
+    }
+}
+```
+
+### `AppTest.java`
+
+```java
+package com.example;
+
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+class AppTest {
+
+    App app = new App();
+
+    @Test
+    void testSmallFine() {
+        assertEquals(10, app.calculateFine(5), 0.01);
+    }
+
+    @Test
+    void testMediumFine() {
+        assertEquals(40, app.calculateFine(8), 0.01);
+    }
+
+    @Test
+    void testLargeFine() {
+        assertEquals(120, app.calculateFine(12), 0.01);
+    }
+
+    @Test
+    void testInvalidLateDays() {
+        assertThrows(IllegalArgumentException.class, () -> app.calculateFine(-1));
+    }
+}
+```
+
+---
+
+## 22) Hotel Room Tariff Calculator
+
+### `App.java`
+
+```java
+package com.example;
+
+public class App {
+
+    public double calculateTariff(int days, double ratePerDay) {
+        if (days < 0 || ratePerDay < 0) {
+            throw new IllegalArgumentException("Invalid input");
+        }
+        return days * ratePerDay;
+    }
+
+    public static void main(String[] args) {
+        App app = new App();
+        System.out.println("Hotel Tariff: " + app.calculateTariff(3, 1500));
+    }
+}
+```
+
+### `AppTest.java`
+
+```java
+package com.example;
+
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+class AppTest {
+
+    App app = new App();
+
+    @Test
+    void testTariff() {
+        assertEquals(4500, app.calculateTariff(3, 1500), 0.01);
+    }
+
+    @Test
+    void testZeroDays() {
+        assertEquals(0, app.calculateTariff(0, 1500), 0.01);
+    }
+
+    @Test
+    void testInvalidInput() {
+        assertThrows(IllegalArgumentException.class, () -> app.calculateTariff(-1, 1500));
+    }
+}
+```
+
+---
+
+## 23) Train Ticket Concession Checker
+
+### `App.java`
+
+```java
+package com.example;
+
+public class App {
+
+    public boolean hasConcession(int age) {
+        if (age < 0) {
+            throw new IllegalArgumentException("Invalid age");
+        }
+        return age < 12 || age > 60;
+    }
+
+    public static void main(String[] args) {
+        App app = new App();
+        System.out.println("Has Concession: " + app.hasConcession(65));
+    }
+}
+```
+
+### `AppTest.java`
+
+```java
+package com.example;
+
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+class AppTest {
+
+    App app = new App();
+
+    @Test
+    void testChildConcession() {
+        assertTrue(app.hasConcession(10));
+    }
+
+    @Test
+    void testSeniorConcession() {
+        assertTrue(app.hasConcession(65));
+    }
+
+    @Test
+    void testNoConcession() {
+        assertFalse(app.hasConcession(30));
+    }
+
+    @Test
+    void testInvalidAge() {
+        assertThrows(IllegalArgumentException.class, () -> app.hasConcession(-1));
+    }
+}
+```
+
+---
+
+## 24) Courier Charge Calculator
+
+### `App.java`
+
+```java
+package com.example;
+
+public class App {
+
+    public double calculateCharge(double weight) {
+        if (weight < 0) {
+            throw new IllegalArgumentException("Invalid weight");
+        }
+
+        if (weight <= 1) {
+            return 50;
+        } else if (weight <= 5) {
+            return 100;
+        } else {
+            return 200;
+        }
+    }
+
+    public static void main(String[] args) {
+        App app = new App();
+        System.out.println("Courier Charge: " + app.calculateCharge(3.5));
+    }
+}
+```
+
+### `AppTest.java`
+
+```java
+package com.example;
+
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+class AppTest {
+
+    App app = new App();
+
+    @Test
+    void testLightWeight() {
+        assertEquals(50, app.calculateCharge(1), 0.01);
+    }
+
+    @Test
+    void testMediumWeight() {
+        assertEquals(100, app.calculateCharge(3), 0.01);
+    }
+
+    @Test
+    void testHeavyWeight() {
+        assertEquals(200, app.calculateCharge(6), 0.01);
+    }
+
+    @Test
+    void testInvalidWeight() {
+        assertThrows(IllegalArgumentException.class, () -> app.calculateCharge(-2));
+    }
+}
+```
+
+---
+
+## 25) Number Sign Checker
+
+### `App.java`
+
+```java
+package com.example;
+
+public class App {
+
+    public String checkSign(int number) {
+        if (number > 0) {
+            return "Positive";
+        } else if (number < 0) {
+            return "Negative";
+        } else {
+            return "Zero";
+        }
+    }
+
+    public static void main(String[] args) {
+        App app = new App();
+        System.out.println("Sign: " + app.checkSign(-5));
+    }
+}
+```
+
+### `AppTest.java`
+
+```java
+package com.example;
+
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+class AppTest {
+
+    App app = new App();
+
+    @Test
+    void testPositive() {
+        assertEquals("Positive", app.checkSign(5));
+    }
+
+    @Test
+    void testNegative() {
+        assertEquals("Negative", app.checkSign(-5));
+    }
+
+    @Test
+    void testZero() {
+        assertEquals("Zero", app.checkSign(0));
+    }
+}
+```
+
+---
+
+## 26) Circle Area Calculator
+
+### `App.java`
+
+```java
+package com.example;
+
+public class App {
+
+    public double calculateArea(double radius) {
+        if (radius < 0) {
+            throw new IllegalArgumentException("Invalid radius");
+        }
+        return Math.PI * radius * radius;
+    }
+
+    public static void main(String[] args) {
+        App app = new App();
+        System.out.println("Circle Area: " + app.calculateArea(7));
+    }
+}
+```
+
+### `AppTest.java`
+
+```java
+package com.example;
+
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+class AppTest {
+
+    App app = new App();
+
+    @Test
+    void testArea() {
+        assertEquals(153.94, app.calculateArea(7), 0.01);
+    }
+
+    @Test
+    void testInvalidRadius() {
+        assertThrows(IllegalArgumentException.class, () -> app.calculateArea(-1));
+    }
+}
+```
+
+---
+
+## 27) Speed Fine Checker
+
+### `App.java`
+
+```java
+package com.example;
+
+public class App {
+
+    public boolean shouldFine(int speed) {
+        if (speed < 0) {
+            throw new IllegalArgumentException("Invalid speed");
+        }
+        return speed > 60;
+    }
+
+    public static void main(String[] args) {
+        App app = new App();
+        System.out.println("Fine Required: " + app.shouldFine(75));
+    }
+}
+```
+
+### `AppTest.java`
+
+```java
+package com.example;
+
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+class AppTest {
+
+    App app = new App();
+
+    @Test
+    void testFineRequired() {
+        assertTrue(app.shouldFine(75));
+    }
+
+    @Test
+    void testNoFine() {
+        assertFalse(app.shouldFine(50));
+    }
+
+    @Test
+    void testInvalidSpeed() {
+        assertThrows(IllegalArgumentException.class, () -> app.shouldFine(-5));
+    }
+}
+```
+
+---
+
+## 28) ATM Withdrawal System
+
+### `App.java`
+
+```java
+package com.example;
+
+public class App {
+
+    private double balance = 5000;
+
+    public double withdraw(double amount) {
+        if (amount <= 0) {
+            throw new IllegalArgumentException("Invalid amount");
+        }
+        if (amount > balance) {
+            throw new IllegalArgumentException("Insufficient balance");
+        }
+        balance -= amount;
+        return balance;
+    }
+
+    public double getBalance() {
+        return balance;
+    }
+
+    public static void main(String[] args) {
+        App app = new App();
+        app.withdraw(1000);
+        System.out.println("Remaining Balance: " + app.getBalance());
+    }
+}
+```
+
+### `AppTest.java`
+
+```java
+package com.example;
+
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+class AppTest {
+
+    @Test
+    void testWithdraw() {
+        App app = new App();
+        assertEquals(4000, app.withdraw(1000), 0.01);
+    }
+
+    @Test
+    void testInsufficientBalance() {
+        App app = new App();
+        assertThrows(IllegalArgumentException.class, () -> app.withdraw(6000));
+    }
+
+    @Test
+    void testInvalidAmount() {
+        App app = new App();
+        assertThrows(IllegalArgumentException.class, () -> app.withdraw(0));
+    }
+}
+```
+
+---
+
+## 29) Marriage Eligibility Checker
+
+### `App.java`
+
+```java
+package com.example;
+
+public class App {
+
+    public boolean isEligible(int age) {
+        if (age < 0) {
+            throw new IllegalArgumentException("Invalid age");
+        }
+        return age >= 21;
+    }
+
+    public static void main(String[] args) {
+        App app = new App();
+        System.out.println("Marriage Eligible: " + app.isEligible(25));
+    }
+}
+```
+
+### `AppTest.java`
+
+```java
+package com.example;
+
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+class AppTest {
+
+    App app = new App();
+
+    @Test
+    void testEligible() {
+        assertTrue(app.isEligible(25));
+    }
+
+    @Test
+    void testNotEligible() {
+        assertFalse(app.isEligible(18));
+    }
+
+    @Test
+    void testInvalidAge() {
+        assertThrows(IllegalArgumentException.class, () -> app.isEligible(-1));
+    }
+}
+```
+
+---
+
+## 30) Donation Eligibility for Blood Camp
+
+### `App.java`
+
+```java
+package com.example;
+
+public class App {
+
+    public boolean canDonate(int age, double weight) {
+        if (age < 0 || weight < 0) {
+            throw new IllegalArgumentException("Invalid input");
+        }
+        return age >= 18 && age <= 60 && weight >= 50;
+    }
+
+    public static void main(String[] args) {
+        App app = new App();
+        System.out.println("Can Donate: " + app.canDonate(25, 55));
+    }
+}
+```
+
+### `AppTest.java`
+
+```java
+package com.example;
+
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+class AppTest {
+
+    App app = new App();
+
+    @Test
+    void testEligible() {
+        assertTrue(app.canDonate(25, 55));
+    }
+
+    @Test
+    void testNotEligibleByAge() {
+        assertFalse(app.canDonate(16, 55));
+    }
+
+    @Test
+    void testNotEligibleByWeight() {
+        assertFalse(app.canDonate(25, 45));
+    }
+
+    @Test
+    void testInvalidInput() {
+        assertThrows(IllegalArgumentException.class, () -> app.canDonate(-1, 55));
+    }
+}
+
+
+Got it 👍 — you want **simple “mini systems” like Bank / Library** (not small one-line logic).
+
+These are **very commonly asked “mini system” questions** in labs 👇
+
+---
+
+# 🔥 1) Student Attendance System
+
+## `App.java`
+
+```java
+package com.example;
+
+public class App {
+
+    private int totalClasses = 0;
+    private int attendedClasses = 0;
+
+    public void addClass() {
+        totalClasses++;
+    }
+
+    public void attendClass() {
+        totalClasses++;
+        attendedClasses++;
+    }
+
+    public double getAttendancePercentage() {
+        if (totalClasses == 0) return 0;
+        return (attendedClasses * 100.0) / totalClasses;
+    }
+}
+```
+
+## `AppTest.java`
+
+```java
+package com.example;
+
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+class AppTest {
+
+    @Test
+    void testAttendance() {
+        App app = new App();
+        app.attendClass();
+        app.attendClass();
+        app.addClass();
+        assertEquals(66.66, app.getAttendancePercentage(), 0.5);
+    }
+}
+```
+
+---
+
+# 🔥 2) Shopping Cart System
+
+## `App.java`
+
+```java
+package com.example;
+
+public class App {
+
+    private double total = 0;
+
+    public void addItem(double price) {
+        if (price < 0) {
+            throw new IllegalArgumentException("Invalid price");
+        }
+        total += price;
+    }
+
+    public double getTotal() {
+        return total;
+    }
+}
+```
+
+## `AppTest.java`
+
+```java
+package com.example;
+
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+class AppTest {
+
+    @Test
+    void testCartTotal() {
+        App cart = new App();
+        cart.addItem(100);
+        cart.addItem(200);
+        assertEquals(300, cart.getTotal(), 0.01);
+    }
+
+    @Test
+    void testInvalidItem() {
+        App cart = new App();
+        assertThrows(IllegalArgumentException.class, () -> cart.addItem(-10));
+    }
+}
+```
+
+---
+
+# 🔥 3) Employee Leave Management System
+
+## `App.java`
+
+```java
+package com.example;
+
+public class App {
+
+    private int leaveBalance = 10;
+
+    public void applyLeave(int days) {
+        if (days <= 0) {
+            throw new IllegalArgumentException("Invalid days");
+        }
+        if (days > leaveBalance) {
+            throw new IllegalArgumentException("Not enough leave balance");
+        }
+        leaveBalance -= days;
+    }
+
+    public int getLeaveBalance() {
+        return leaveBalance;
+    }
+}
+```
+
+## `AppTest.java`
+
+```java
+package com.example;
+
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+class AppTest {
+
+    @Test
+    void testApplyLeave() {
+        App emp = new App();
+        emp.applyLeave(5);
+        assertEquals(5, emp.getLeaveBalance());
+    }
+
+    @Test
+    void testExceedLeave() {
+        App emp = new App();
+        assertThrows(IllegalArgumentException.class, () -> emp.applyLeave(20));
+    }
+}
+```
+
+---
+
+# 🔥 4) Inventory Management System
+
+## `App.java`
+
+```java
+package com.example;
+
+public class App {
+
+    private int stock = 0;
+
+    public void addStock(int quantity) {
+        if (quantity <= 0) {
+            throw new IllegalArgumentException("Invalid quantity");
+        }
+        stock += quantity;
+    }
+
+    public void removeStock(int quantity) {
+        if (quantity > stock) {
+            throw new IllegalArgumentException("Not enough stock");
+        }
+        stock -= quantity;
+    }
+
+    public int getStock() {
+        return stock;
+    }
+}
+```
+
+## `AppTest.java`
+
+```java
+package com.example;
+
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+class AppTest {
+
+    @Test
+    void testInventory() {
+        App inv = new App();
+        inv.addStock(50);
+        inv.removeStock(20);
+        assertEquals(30, inv.getStock());
+    }
+}
+```
+
+---
+
+# 🔥 5) Simple Banking System (Improved)
+
+## `App.java`
+
+```java
+package com.example;
+
+public class App {
+
+    private double balance = 0;
+
+    public void deposit(double amount) {
+        if (amount <= 0) throw new IllegalArgumentException("Invalid amount");
+        balance += amount;
+    }
+
+    public void withdraw(double amount) {
+        if (amount > balance) throw new IllegalArgumentException("Insufficient balance");
+        balance -= amount;
+    }
+
+    public double getBalance() {
+        return balance;
+    }
+}
+```
+
+## `AppTest.java`
+
+```java
+package com.example;
+
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+class AppTest {
+
+    @Test
+    void testBank() {
+        App bank = new App();
+        bank.deposit(1000);
+        bank.withdraw(500);
+        assertEquals(500, bank.getBalance(), 0.01);
+    }
+}
+```
+
+---
+
+# 🔥 6) Library Fine System
+
+## `App.java`
+
+```java
+package com.example;
+
+public class App {
+
+    public double calculateFine(int daysLate) {
+        if (daysLate < 0) {
+            throw new IllegalArgumentException("Invalid days");
+        }
+        return daysLate * 5;
+    }
+}
+```
+
+## `AppTest.java`
+
+```java
+package com.example;
+
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+class AppTest {
+
+    @Test
+    void testFine() {
+        App lib = new App();
+        assertEquals(50, lib.calculateFine(10));
+    }
+}
+```
+
+---
+
+# 🔥 7) Student Marks System
+
+## `App.java`
+
+```java
+package com.example;
+
+public class App {
+
+    private int totalMarks = 0;
+
+    public void addMarks(int marks) {
+        if (marks < 0) {
+            throw new IllegalArgumentException("Invalid marks");
+        }
+        totalMarks += marks;
+    }
+
+    public int getTotalMarks() {
+        return totalMarks;
+    }
+}
+```
+
+## `AppTest.java`
+
+```java
+package com.example;
+
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+class AppTest {
+
+    @Test
+    void testMarks() {
+        App student = new App();
+        student.addMarks(80);
+        student.addMarks(70);
+        assertEquals(150, student.getTotalMarks());
+    }
+}
+```
+
+---
+
+# 🔥 8) Ticket Booking System
+
+## `App.java`
+
+```java
+package com.example;
+
+public class App {
+
+    private int seats = 10;
+
+    public void bookTicket(int count) {
+        if (count > seats) {
+            throw new IllegalArgumentException("Not enough seats");
+        }
+        seats -= count;
+    }
+
+    public int getAvailableSeats() {
+        return seats;
+    }
+}
+```
+
+## `AppTest.java`
+
+```java
+package com.example;
+
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+class AppTest {
+
+    @Test
+    void testBooking() {
+        App ticket = new App();
+        ticket.bookTicket(3);
+        assertEquals(7, ticket.getAvailableSeats());
+    }
+}
+```
+
+---
+
+Ahh now I understand 👍 — you want **App.java + AppTest.java together for the LAST batch of “simple systems” I gave (canteen, wallet, parking, etc.)**
+
+Let’s fix that properly 👇
+
+---
+
+# 🔥 1) Canteen Billing System
+
+## ✅ App.java
+
+```java
+package com.example;
+
+public class App {
+
+    private double total = 0;
+
+    public void addItem(double price) {
+        if (price < 0) throw new IllegalArgumentException("Invalid price");
+        total += price;
+    }
+
+    public double getBill() {
+        return total;
+    }
+}
+```
+
+## ✅ AppTest.java
+
+```java
+package com.example;
+
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+class AppTest {
+
+    @Test
+    void testBill() {
+        App app = new App();
+        app.addItem(100);
+        app.addItem(50);
+        assertEquals(150, app.getBill(), 0.01);
+    }
+
+    @Test
+    void testInvalidItem() {
+        App app = new App();
+        assertThrows(IllegalArgumentException.class, () -> app.addItem(-10));
+    }
+}
+```
+
+---
+
+# 🔥 2) Fee Payment System
+
+## ✅ App.java
+
+```java
+package com.example;
+
+public class App {
+
+    private double balance = 10000;
+
+    public void payFee(double amount) {
+        if (amount <= 0) throw new IllegalArgumentException("Invalid amount");
+        if (amount > balance) throw new IllegalArgumentException("Exceeds balance");
+        balance -= amount;
+    }
+
+    public double getRemainingFee() {
+        return balance;
+    }
+}
+```
+
+## ✅ AppTest.java
+
+```java
+package com.example;
+
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+class AppTest {
+
+    @Test
+    void testFeePayment() {
+        App app = new App();
+        app.payFee(2000);
+        assertEquals(8000, app.getRemainingFee(), 0.01);
+    }
+
+    @Test
+    void testExceedFee() {
+        App app = new App();
+        assertThrows(IllegalArgumentException.class, () -> app.payFee(20000));
+    }
+}
+```
+
+---
+
+# 🔥 3) Parking Slot System
+
+## ✅ App.java
+
+```java
+package com.example;
+
+public class App {
+
+    private int slots = 5;
+
+    public void park() {
+        if (slots == 0) throw new IllegalArgumentException("No slots");
+        slots--;
+    }
+
+    public int getSlots() {
+        return slots;
+    }
+}
+```
+
+## ✅ AppTest.java
+
+```java
+package com.example;
+
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+class AppTest {
+
+    @Test
+    void testParking() {
+        App app = new App();
+        app.park();
+        assertEquals(4, app.getSlots());
+    }
+
+    @Test
+    void testNoSlots() {
+        App app = new App();
+        for (int i = 0; i < 5; i++) app.park();
+        assertThrows(IllegalArgumentException.class, () -> app.park());
+    }
+}
+```
+
+---
+
+# 🔥 4) Wallet System
+
+## ✅ App.java
+
+```java
+package com.example;
+
+public class App {
+
+    private double balance = 0;
+
+    public void addMoney(double amount) {
+        if (amount <= 0) throw new IllegalArgumentException("Invalid amount");
+        balance += amount;
+    }
+
+    public void spendMoney(double amount) {
+        if (amount > balance) throw new IllegalArgumentException("Insufficient balance");
+        balance -= amount;
+    }
+
+    public double getBalance() {
+        return balance;
+    }
+}
+```
+
+## ✅ AppTest.java
+
+```java
+package com.example;
+
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+class AppTest {
+
+    @Test
+    void testWallet() {
+        App app = new App();
+        app.addMoney(1000);
+        app.spendMoney(400);
+        assertEquals(600, app.getBalance(), 0.01);
+    }
+
+    @Test
+    void testInsufficient() {
+        App app = new App();
+        assertThrows(IllegalArgumentException.class, () -> app.spendMoney(100));
+    }
+}
+```
+
+---
+
+# 🔥 5) Product Stock Alert System
+
+## ✅ App.java
+
+```java
+package com.example;
+
+public class App {
+
+    private int stock = 10;
+
+    public void sell() {
+        if (stock == 0) throw new IllegalArgumentException("Out of stock");
+        stock--;
+    }
+
+    public boolean isLowStock() {
+        return stock < 3;
+    }
+}
+```
+
+## ✅ AppTest.java
+
+```java
+package com.example;
+
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+class AppTest {
+
+    @Test
+    void testLowStock() {
+        App app = new App();
+        for (int i = 0; i < 8; i++) app.sell();
+        assertTrue(app.isLowStock());
+    }
+
+    @Test
+    void testOutOfStock() {
+        App app = new App();
+        for (int i = 0; i < 10; i++) app.sell();
+        assertThrows(IllegalArgumentException.class, () -> app.sell());
+    }
+}
+```
+
+---
+
+# 🔥 6) Quiz Score System
+
+## ✅ App.java
+
+```java
+package com.example;
+
+public class App {
+
+    private int score = 0;
+
+    public void correctAnswer() {
+        score += 10;
+    }
+
+    public int getScore() {
+        return score;
+    }
+}
+```
+
+## ✅ AppTest.java
+
+```java
+package com.example;
+
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+class AppTest {
+
+    @Test
+    void testScore() {
+        App app = new App();
+        app.correctAnswer();
+        app.correctAnswer();
+        assertEquals(20, app.getScore());
+    }
+}
+```
+
+---
+
+# 🔥 7) Password Retry System
+
+## ✅ App.java
+
+```java
+package com.example;
+
+public class App {
+
+    private int attempts = 3;
+
+    public void wrongAttempt() {
+        if (attempts > 0) attempts--;
+    }
+
+    public boolean isBlocked() {
+        return attempts == 0;
+    }
+}
+```
+
+## ✅ AppTest.java
+
+```java
+package com.example;
+
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+class AppTest {
+
+    @Test
+    void testBlock() {
+        App app = new App();
+        app.wrongAttempt();
+        app.wrongAttempt();
+        app.wrongAttempt();
+        assertTrue(app.isBlocked());
+    }
+}
+```
+
+
+
